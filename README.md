@@ -198,7 +198,7 @@ Body:
 
 | Campo         | Descrição     | Obrigatorio |
 | ------------- |-------------| :---------: |
-| movie | ID do filme que o usuário deseja locar | X |
+| movie | ID do filme que o usuário deseja devolver | X |
 
 
 O filme será marcado como available = true e desvinculado ao usuario
