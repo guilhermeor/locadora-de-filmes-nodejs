@@ -1,0 +1,16 @@
+version: "3"
+services:
+  app:
+    build: .
+    depends_on:
+      - postgres
+    ports:
+      - "3000:3000"
+    environment:       
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/postgres
+  postgres:
+    image: postgres:9.6.8-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
