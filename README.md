@@ -22,14 +22,23 @@ API REST em nodejs para uma aplicação de locação de filmes:
 * Docker
 * Nodemon
 
-# Instruções de instalação
+# Instruções de instalação local:
 
-    # Para 
-    git clone https://github.com/erick-adl/movie-rental.git
-    cd bestMovies-API        
+    #Para instalação local tenha nodejs  Postgre instalado com: user:postgres, password:postgres e database:postgres
+	
+    git clone https://github.com/erick-adl/locadora-de-filmes-nodejs.git
+    cd locadora-de-filmes-nodejs
     npm install (Instalação das bibiliotecas)
-    npm start (Inicia aplicação)
+    npm start (Inicia aplicação) ou npm run dev (Para utilizar nodemon)
 
+# Instruções para instalação Docker:
+
+    #Para instalação com docker tenha docker-compose instalado.
+	
+    git clone https://github.com/erick-adl/locadora-de-filmes-nodejs.git
+    cd locadora-de-filmes-nodejs
+    docker-compose up
+	
 # Autenticação
 
 A autenticação é feito por token, o front-end é responsável por armazenar o token, e enviá-lo a cada requisição, assim como atualizá-lo com a resposta do servidor. 

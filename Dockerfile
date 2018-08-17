@@ -1,15 +1,7 @@
 FROM node:8-alpine
-
-RUN mkdir -p /user/src/app
-
-WORKDIR /user/src/app
-
-COPY package.json /usr/src/app/
-
+WORKDIR /app
+COPY package.json /app
 RUN npm install
-
-COPY . /usr/src/app
-
-CMD [ "npm", "start" ]
-
+COPY . /app
+CMD [ "npm", "run", "docker" ]
 EXPOSE 3000

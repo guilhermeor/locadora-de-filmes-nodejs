@@ -30,7 +30,7 @@ models.sequelize.sync().then(function(){
   server.on('error', onError);
   server.on('listening', onListening);
   
-  const { User } = require('../models');
+  createFirstMovie();
 });
 
 /**
@@ -91,4 +91,32 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
+}
+
+
+function createFirstMovie(){
+  const { Movie } = require('../models');
+  Movie.findOrCreate({where: {id: '1'}, defaults: {title: 'Scarface', director: 'Brian De Palma', available: true}})
+  .spread((user, created) => {
+    console.log(user.get({
+      plain: true
+    }))
+    console.log(created)
+  })
+
+  Movie.findOrCreate({where: {id: '2'}, defaults: {title: 'Back to the Future', director: 'Robert Zemeckis', available: true}})
+  .spread((user, created) => {
+    console.log(user.get({
+      plain: true
+    }))
+    console.log(created)
+  })
+
+  Movie.findOrCreate({where: {id: '3'}, defaults: {title: 'The GodFather', director: 'Francis Ford Coppola', available: true}})
+  .spread((user, created) => {
+    console.log(user.get({
+      plain: true
+    }))
+    console.log(created)
+  })
 }
