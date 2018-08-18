@@ -45,13 +45,13 @@ A autenticação é feito por token, o front-end é responsável por armazenar o
 A API foi construída para ser stateless, não armazenando tokens.
 O token expira e pode ser facilmente configurado e gerado um novo token a cada requisição.
 O logoff do usuário é realizado exclusivamente no front-end, eliminando o token da memória.
-O token gerado para recuperação de conta, não pode ser utilizado para login/etc e expira em 24 horas.
+O token gerado para recuperação de senha, não pode ser utilizado para login/etc e expira em 24 horas.
 
 ## Registro do Usuário
 
 #### REQUEST
 
-POST: [http://localhost:3000/register](http://localhost:3000/register)
+POST: [http://localhost:3000/users/register](http://localhost:3000/users/register)
 
 Body:
 
@@ -72,7 +72,7 @@ Campo **authorization** no header com o token do usuário, deverá ser armazenad
 
 #### REQUEST
 
-POST: [http://localhost:3000/users/authenticate](http://localhost:3000/login)
+POST: [http://localhost:3000/users/authenticate](http://localhost:3000/users/authenticate)
 
 Body:
 
@@ -91,17 +91,25 @@ Campo **authentication** no header com o token do usuário, deverá ser armazena
 
 #### REQUEST
 
-POST: [http://localhost:3000/users/register](http://localhost:3000/users/register)
+POST: [http://localhost:3000/users/forgot_pass](http://localhost:3000/users/forgot_pass)
 
 Body:
 
 | Campo         | Descrição     | Obrigatorio |
 | ------------- |-------------| :---------: |
-| name | Name do usuário | X |
 | email | Email do usuário | X |
-| password | Password do usuário | X |
 
+## Reset  de senha
 
+#### REQUEST
+
+POST: [http://localhost:3000/users/reset_pass](http://localhost:3000/users/reset_pass)
+
+Body:
+
+| Campo         | Descrição     | Obrigatorio |
+| ------------- |-------------| :---------: |
+| email | Email do usuário | X |
 
 - - - -
 
@@ -128,8 +136,8 @@ cada filme possuirá:
 GET: [http://localhost:3000/movies/available](http://localhost:3000/movies/available)
 
 É necessário adicionar o token no header da requisição.
-Retornará apenas os títulos que estão disponíveis para locação, em um array de filmes,
-cada filme possuirá:
+Retornará apenas os títulos que estão disponíveis para locação.
+Cada filme possuirá:
 
 | Campo         | Descrição     |
 | ------------- |-------------|
@@ -182,7 +190,7 @@ Retornará o títulos que associado ao id:
 
 # Locação de um filme
 
-POST: [http://localhost:3000/rent](http://localhost:3000/rent)
+POST: [http://localhost:3000/movies/rent](http://localhost:3000/movies/rent)
 
 É necessário adicionar o token no header (ou body) da requisição.
 
@@ -199,7 +207,7 @@ O filme será marcado como available = false e vinculado ao usuario
 
 # Devolução de um filme
 
-POST: [http://localhost:3000/return](http://localhost:3000/return)
+POST: [http://localhost:3000/movies/return](http://localhost:3000/movies/return)
 
 É necessário adicionar o token no header (ou body) da requisição.
 
