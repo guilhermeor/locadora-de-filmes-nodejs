@@ -3,9 +3,7 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - echo Logging in to Amazon ECR...
-      - aws --version
-      - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+      - docker login --username=$DOCKER_USER --password=$DOCKER_PASS    
       - REPOSITORY_URI=guilhermerosa/locadorafilmes
   build:
     commands:
